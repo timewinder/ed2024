@@ -2,10 +2,55 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>My first three.js app</title>
-		<style>
-			body { margin: 0; }
+		<title>te amazing boet game</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Inconsolata:wght@200..900&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+			body {
+                margin: 0;
+                padding: 30px;
+                font-family: "Gochi Hand";
+                color: #fff;
+                text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+            }
             canvas { background: #999; }
+            .hidden { display: none; }
+            .red {
+                color: rgb(255, 111, 0);
+            }
+            th, td {
+                padding: 10px;
+                border: 1px solid #000;
+            }
+            @keyframes funny {
+                from {
+                    transform: scale(150%) rotate(-15deg) translateX(-30vw) translateY(-10vw);
+                }
+                to {
+                    transform: scale(100%) rotate(3deg) translateX(0px) translateY(0px);
+                }
+            }
+            @keyframes funny2 {
+                from {
+                    transform: scale(500%) rotate(-50deg);
+                }
+                to {
+                    transform: scale(100%) rotate(0deg);
+                }
+            }
+            .cursive {
+                font-family: "Cedarville Cursive";
+            }
+            button {
+                padding: 15px;
+                font-family: inherit;
+                border: none;
+                cursor: pointer;
+                transition: 180ms;
+            }
+            button:hover {
+                transform: scale(150%);
+            }
 		</style>
         <script type="importmap">
             {
@@ -17,6 +62,48 @@
         </script>
         <script type="module" src="main.js"></script>
 	</head>
-	<body onerror="alert(event)">
+	<body onerror="//alert(event)">
+        <div style="position: fixed; top: 30px; left: 30px; padding: 30px;">
+            <h1>Score: <span id="score">NaN</span></h1>
+            <p>
+                Objective: Collect trash, Don't crash.<br>
+                <b>[ A ]</b> and <b>[ D ]</b> to turn boat
+            </p>
+        </div>
+
+        <div style="position: fixed; top: 30px; left: 30px; padding: 30px; width: calc(100vw - 120px); height: calc(100vh - 120px); background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: sepia(90%); transition: 100ms;" id="death" class="hidden">
+            <center>
+                <h1 style="font-size: 65px; animation-name: funny2; animation-duration: 0.6s;" class="red">Damn bro 🗿</h1>
+                <div style="background: #fff7d1; padding: 35px; width: fit-content; color: #000; text-shadow: none; text-align: left; font-family: 'Inconsolata'; transform: rotate(3deg); margin-top: -30px; animation-name: funny; animation-duration: 1.2s; box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);">
+                    <h2>PREFORMANCE REPORT:</h2>
+                    <table>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Amount</th>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td class="cursive"><b class="red">[ Totaled ]</b></td>
+                        </tr>
+                        <tr>
+                            <td>Score</td>
+                            <td class="cursive"><span id="score2">NaN</span></td>
+                        </tr>
+                        <tr>
+                            <td>Time</td>
+                            <td class="cursive"><span id="time">NaN</span> sec</td>
+                        </tr>
+                        <tr>
+                            <td>Comments</td>
+                            <td class="cursive"><span id="taunt"></span></td>
+                        </tr>
+                    </table>
+                    <img src="signature.png" style="height: 60px;">
+                    <p class="cursive">NOTE: please don't run into rocks</p>
+                </div><br><br>
+                <button onclick="window.location.reload();">Play again :(</button>
+            </center>
+        </div>
 	</body>
 </html>

@@ -68,7 +68,7 @@ const boatWater = new ParticleSystem(
 	new THREE.SphereGeometry(0.35, 8, 4), new THREE.MeshToonMaterial({ color: 0xffffff }), 0.01, 2.25,
 	new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, 0), 0.25, DeathTypes.SHRINK);
 scene.add(boatWater);
-let playerVelocity = 4.5;
+let playerVelocity = 7;
 
 const waterGeometry = new THREE.PlaneGeometry(500, 500);
 const waterMaterial = new THREE.MeshToonMaterial({ color: 0x63e0ff, transparent: true, opacity: 0.5 });
@@ -146,7 +146,7 @@ function spawnThingy(radius = 26) {
 			gltf.scene.rotation.y = Math.random() * 2 * Math.PI;
 			console.log(gltf.scene.position)
 			gltf.scene.userData = {
-				score: 2,
+				score: 5,
 				radius: 1.25
 			};
 			generatedProps.push(gltf.scene);
@@ -166,7 +166,7 @@ function spawnThingy(radius = 26) {
 			gltf.scene.rotation.set(Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI, Math.random() * 2 * Math.PI);
 			console.log(gltf.scene.position)
 			gltf.scene.userData = {
-				score: 5,
+				score: 10,
 				radius: 0.5
 			};
 			generatedProps.push(gltf.scene);
@@ -184,7 +184,7 @@ let dead = false;
 
 
 function awake() {
-	for (let i = 0; i < 5; i++) spawnThingy(5);
+	// for (let i = 0; i < 5; i++) spawnThingy(5);
 	update();
 }
 
@@ -244,10 +244,10 @@ function update() {
 				document.getElementById("death").classList.toggle("hidden");
 				document.getElementById("score2").innerHTML = score;
 				document.getElementById("time").innerHTML = Math.round(timeElapsed);
-				if (score <= 20) {
+				if (score <= 30) {
 					document.getElementById("taunt").innerHTML = "<b class='red'>My grandma plays better</b>"
 				}
-				else if (score < 50) {
+				else if (score < 60) {
 					document.getElementById("taunt").innerHTML = "<span class='red'>Pretty decent (you still suck tho)</span>"
 				}
 				else {

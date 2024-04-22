@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { DeathTypes, ParticleSystem } from '/particles.mjs';
+import { DeathTypes, ParticleSystem } from './particles.mjs';
 
 const padding = 30;
 const scene = new THREE.Scene();
